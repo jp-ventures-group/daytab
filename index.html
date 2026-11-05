@@ -335,6 +335,8 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);font-size:14px;color
   var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>8)};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
+  // Supabase project "daytab": public key, table only allows inserts (RLS), no reading
+  var SB_URL='https://nqosztqtdkdkxpjjlmfw.supabase.co', SB_KEY='sb_publishable_0GIs93SXhWMCZlCQ83PSEQ_zacIaR8i';
   var form=document.getElementById('wl-form'),btn=document.getElementById('wl-btn'),msg=document.getElementById('wl-msg');
   function say(t,cls){msg.textContent=t;msg.className='msg '+(cls||'')}
   form.addEventListener('submit',function(e){
@@ -344,11 +346,12 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);font-size:14px;color
     if(!form.consent.checked){say('Bitte bestätige die Einwilligung, damit wir dir schreiben dürfen.','err');return}
     var interests=[].slice.call(form.querySelectorAll('input[name=interests]:checked')).map(function(i){return i.value});
     btn.disabled=true;say('Wird gesendet …');
-    fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,interests:interests,consent:true,website:form.website.value})})
-      .then(function(r){return r.json().catch(function(){return {}}).then(function(d){return {ok:r.ok,d:d}})})
-      .then(function(res){
-        if(res.ok){form.reset();say(res.d.already?'Du stehst schon auf der Warteliste.':'Danke! Du stehst auf der Warteliste.','ok')}
-        else{say(res.d.error||'Das hat nicht geklappt. Bitte versuch es später noch einmal.','err')}
+    if(form.website.value){form.reset();say('Danke! Du stehst auf der Warteliste.','ok');btn.disabled=false;return}
+    fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify({email:email.toLowerCase(),interests:interests,consent:true})})
+      .then(function(r){
+        if(r.ok){form.reset();say('Danke! Du stehst auf der Warteliste.','ok')}
+        else if(r.status===409){form.reset();say('Du stehst schon auf der Warteliste.','ok')}
+        else{say('Das hat nicht geklappt. Bitte versuch es später noch einmal.','err')}
       })
       .catch(function(){say('Keine Verbindung. Bitte versuch es später noch einmal.','err')})
       .finally(function(){btn.disabled=false});

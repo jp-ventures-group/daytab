@@ -1,7 +1,0 @@
-CREATE TABLE IF NOT EXISTS waitlist (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  email TEXT NOT NULL UNIQUE,
-  interests TEXT NOT NULL DEFAULT '',
-  consent_at TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
