@@ -1,0 +1,12 @@
+# Vor dem öffentlichen Start (Impressum ausgefüllt): die X-Robots-Tag-Zeile unten löschen und robots.txt freigeben
+/*
+  X-Robots-Tag: noindex
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/*.html
+  Cache-Control: no-cache
+/
+  Cache-Control: no-cache
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
