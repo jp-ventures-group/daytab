@@ -4,7 +4,9 @@ Landingpage für DayTab, ein Projekt von JP Ventures. Gehostet auf Cloudflare Pa
 
 - `index.html`: Startseite mit Warteliste
 - `impressum.html`, `datenschutz.html`: Platzhalter vor dem Start ausfüllen
-- Warteliste: Formular schreibt direkt in die Tabelle `waitlist` im Supabase-Projekt „daytab“ (nur Einfügen erlaubt, Lesen nur im Supabase-Dashboard)
+- Gestaltung nach dem DayTab-Design-System v1 (Tokens in `assets/site.css`, Schrift Inter selbst gehostet in `assets/fonts/`, Logo `assets/daytab-logo.svg`)
+- Texte 1:1 aus claude/website-texte.md (von Recht geprüft) – keine eigenen Texte
+- Warteliste: Formular sendet an `/api/warteliste` (Pages Function mit Double-Opt-in, folgt nach Entscheidung J-05); bis dahin zeigt es die Fehlermeldung
 
 Vor dem öffentlichen Start: Impressum und Datenschutz ausfüllen, dann in `_headers` die Zeile `X-Robots-Tag: noindex` löschen und in `robots.txt` `Disallow: /` durch `Allow: /` ersetzen.
 
