@@ -38,12 +38,16 @@ export async function onRequest(context) {
 
   let eingabe = '';
   try {
-    const dekodiert = atob(auth.slice(6));
-    eingabe = dekodiert.slice(dekodiert.indexOf(':') + 1);
+    // Base64 → Bytes → UTF-8 (Sonderzeichen wie ä, €, § korrekt), dann Leerzeichen/Zeilenumbrüche
+    // am Rand entfernen (passiert beim Kopieren aus Passwortmanagern).
+    const bin = atob(auth.slice(6).trim());
+    const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+    const dekodiert = new TextDecoder().decode(bytes);
+    eingabe = dekodiert.slice(dekodiert.indexOf(':') + 1).trim();
   } catch {
     return gesperrt();
   }
-  if (!gleich(eingabe, passwort)) return gesperrt();
+  if (!gleich(eingabe, String(passwort).trim())) return gesperrt();
 
   const antwort = await context.next();
   const neu = new Response(antwort.body, antwort);
