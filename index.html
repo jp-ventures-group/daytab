@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DayTab – Deine Supplements, automatisch ausgegeben</title>
-<meta name="description" content="DayTab gibt deine Supplements zur eingestellten Zeit aus – für bis zu vier Personen. Jetzt auf die Warteliste.">
+<meta name="description" content="DayTab gibt deine Supplements nach deiner Routine aus – zu mehreren Zeiten am Tag, für bis zu vier Personen. Jetzt auf die Warteliste.">
 <meta property="og:title" content="DayTab – Deine Supplements, automatisch ausgegeben">
-<meta property="og:description" content="DayTab gibt deine Supplements zur eingestellten Zeit aus – für bis zu vier Personen. Jetzt auf die Warteliste.">
+<meta property="og:description" content="DayTab gibt deine Supplements nach deiner Routine aus – zu mehreren Zeiten am Tag, für bis zu vier Personen. Jetzt auf die Warteliste.">
 <link rel="icon" href="/assets/daytab-zeichen.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/inter-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,8 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .h1{font-size:clamp(32px,5vw,44px);line-height:1.14;font-weight:700;letter-spacing:-.02em}
 .h2{font-size:clamp(24px,3.4vw,30px);line-height:1.2;font-weight:600;letter-spacing:-.01em}
 .h3{font-size:21px;line-height:28px;font-weight:600}
+.claim-hero{font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.01em;color:var(--brand-silver);margin:var(--space-4) 0 0}
+.claim-foot{font-weight:600;color:var(--ink)}
 .lead{font-size:21px;line-height:32px;color:var(--ink);max-width:36em;margin:var(--space-6) 0 0}
 p{margin:0}
 .muted{color:var(--ink-muted)}
@@ -56,7 +58,7 @@ p{margin:0}
 section.mist .card{background:var(--surface)}
 .card p{margin-top:var(--space-2)}
 .cards.first{margin-top:0}
-.step-no{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--brand-orange);color:#fff;font-weight:700;font-size:17px;margin-bottom:var(--space-4)}
+.step-no{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--action);color:var(--on-action);font-weight:700;font-size:17px;margin-bottom:var(--space-4)}
 
 /* Spender */
 .specs{margin:var(--space-12) 0 0;padding:0;border-top:1px solid var(--line)}
@@ -97,7 +99,7 @@ legend{font-weight:600;margin-bottom:var(--space-3);padding:0}
 .chip input{position:absolute;opacity:0;width:1px;height:1px}
 .chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 var(--space-4);border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1.5px var(--line-strong);cursor:pointer;user-select:none}
 .chip input:checked+span{background:var(--ink);color:var(--surface);box-shadow:none}
-.chip input:focus-visible+span{outline:2px solid var(--brand-orange);outline-offset:2px}
+.chip input:focus-visible+span{outline:2px solid var(--focus);outline-offset:2px}
 .consent{display:grid;grid-template-columns:24px 1fr;gap:var(--space-3);align-items:start;font-size:14px;line-height:20px}
 .consent input{width:22px;height:22px;margin:0;accent-color:var(--ink)}
 .status{font-weight:600}
@@ -138,7 +140,8 @@ footer nav a:hover{text-decoration:underline}
   <div class="wrap hero-grid">
     <div>
       <h1 class="display">Sortierst du noch oder droppst du schon?</h1>
-      <p class="lead">DayTab gibt deine Supplements zur eingestellten Zeit aus. Ein Modul pro Supplement, eine Schublade pro Person. Du nimmst nur noch raus.</p>
+      <p class="claim-hero">Trust the drop.</p>
+      <p class="lead">Deine Routine, automatisch ausgegeben. Morgens, mittags, abends – DayTab legt zu jeder eingestellten Zeit deine Kugeln in deine Schublade. Für bis zu vier Personen, gesteuert über die App.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#warteliste">Auf die Warteliste</a>
         <a class="btn btn-secondary" href="#so-funktionierts">So funktioniert's</a>
@@ -147,8 +150,8 @@ footer nav a:hover{text-decoration:underline}
     <div class="stage" aria-hidden="true">
       <!-- Grafik: Bildzeichen-Motiv (Kugel über Balken), keine Konstruktion -->
       <svg viewBox="0 0 320 320">
-        <circle class="drop" cx="160" cy="44" r="22" fill="#E8572A"/>
-        <rect x="56" y="254" width="208" height="22" rx="11" fill="#111418"/>
+        <circle class="drop" cx="160" cy="44" r="22" fill="#848C99"/>
+        <rect x="56" y="254" width="208" height="22" rx="11" fill="#0E1A2B"/>
         <circle cx="84" cy="230" r="14" fill="#2563C9"/>
         <circle cx="116" cy="230" r="14" fill="#E3A21A"/>
         <circle cx="204" cy="230" r="14" fill="#2E9E52"/>
@@ -174,9 +177,9 @@ footer nav a:hover{text-decoration:underline}
   <div class="wrap">
     <h2 class="h1">So funktioniert's</h2>
     <div class="cards">
-      <div class="card"><span class="step-no">1</span><h3 class="h3">Einstellen</h3><p>In der App legst du für jede Person fest, welches Supplement wann dran ist.</p></div>
-      <div class="card"><span class="step-no">2</span><h3 class="h3">Ausgeben</h3><p>Zur eingestellten Zeit zählt DayTab jede Kugel einzeln ab und legt sie in die Schublade der Person.</p></div>
-      <div class="card"><span class="step-no">3</span><h3 class="h3">Rausnehmen</h3><p>Schublade auf, Tagesdosis raus. Die App merkt sich, was ausgegeben wurde.</p></div>
+      <div class="card"><span class="step-no">1</span><h3 class="h3">Routine anlegen</h3><p>In der App legst du für jede Person fest, welches Supplement zu welcher Zeit dran ist – morgens, mittags, abends oder wann es dir passt.</p></div>
+      <div class="card"><span class="step-no">2</span><h3 class="h3">Ausgeben</h3><p>Zu jeder eingestellten Zeit zählt DayTab die Kugeln einzeln ab und legt sie in die Schublade der Person. Die App erinnert dich.</p></div>
+      <div class="card"><span class="step-no">3</span><h3 class="h3">Rausnehmen</h3><p>Schublade auf, Kugeln raus. Die App merkt sich, was ausgegeben wurde, und behält den Vorrat im Blick.</p></div>
     </div>
   </div>
 </section>
@@ -225,12 +228,13 @@ footer nav a:hover{text-decoration:underline}
 <!-- App -->
 <section class="mist" id="app">
   <div class="wrap">
-    <h2 class="h1">Die App weiß, was drin ist.</h2>
+    <h2 class="h1">Die App ist das Herzstück.</h2>
     <ul class="points">
-      <li style="background:var(--surface)">Routinen für jede Person, mit beliebig vielen Zeiten am Tag.</li>
-      <li style="background:var(--surface)">Verlauf: was wann ausgegeben wurde.</li>
-      <li style="background:var(--surface)">Vorrat: wie lange jedes Modul noch reicht – und rechtzeitig Bescheid, bevor es leer ist.</li>
-      <li style="background:var(--surface)">Coach: eine KI, die Fragen zu den DayTab-Produkten beantwortet und beim Einrichten der Routine hilft. Keine Diagnosen, keine Beratung bei Beschwerden.</li>
+      <li style="background:var(--surface)"><strong>Routinen:</strong> für jede Person eine eigene, mit beliebig vielen Zeiten am Tag – zum Beispiel morgens, mittags und abends. Du bestimmst sie selbst und kannst sie jederzeit ändern.</li>
+      <li style="background:var(--surface)"><strong>Erinnerungen:</strong> eine Nachricht aufs Handy und ein Licht an der Schublade, sobald eine Ausgabe bereitliegt.</li>
+      <li style="background:var(--surface)"><strong>Coach:</strong> dein Coach in der App – eine KI, die Fragen zu den DayTab-Produkten beantwortet, dir beim Einrichten deiner Routinen hilft und die Zeiten nach deinem Alltag ausrichtet. Keine Diagnosen, keine Beratung bei Beschwerden.</li>
+      <li style="background:var(--surface)"><strong>Vorrat:</strong> wie lange jedes Modul noch reicht – und rechtzeitig Bescheid, bevor es leer ist. Nachbestellen mit einem Tipp.</li>
+      <li style="background:var(--surface)"><strong>Verlauf:</strong> was wann ausgegeben wurde.</li>
     </ul>
   </div>
 </section>
@@ -280,6 +284,7 @@ footer nav a:hover{text-decoration:underline}
     <h2 class="h1">FAQ</h2>
     <div class="faq">
       <details><summary>Kann ich andere Kapseln oder Tabletten einfüllen?</summary><p>Nein. DayTab ist auf die DayTab-Kugeln abgestimmt. Nur damit kann der Spender jede Kugel einzeln ausgeben.</p></details>
+      <details><summary>Gibt DayTab nur einmal am Tag aus?</summary><p>Nein. Jede Person hat ihre eigene Routine mit so vielen Zeiten, wie sie braucht – zum Beispiel morgens, mittags und abends.</p></details>
       <details><summary>Was passiert, wenn niemand zu Hause ist?</summary><p>Die Kugeln bleiben im Modul, bis die eingestellte Zeit kommt. Dann landen sie in der Schublade der Person. Die App zeigt, was noch nicht entnommen wurde.</p></details>
       <details><summary>Brauche ich das Handy?</summary><p>Zum Einrichten ja. Danach läuft DayTab nach deiner Routine auch ohne Handy. Die Tasten am Gerät geben sofort aus.</p></details>
       <details><summary>Ist DayTab ein Medikamentenspender?</summary><p>Nein. DayTab ist für Nahrungsergänzungsmittel gedacht.</p></details>
@@ -293,6 +298,7 @@ footer nav a:hover{text-decoration:underline}
 <footer>
   <div class="wrap">
     <img src="/assets/daytab-logo.svg" alt="DayTab" width="96" height="20">
+    <p class="claim-foot">Trust the drop.</p>
     <p class="small muted">Nahrungsergänzungsmittel sind kein Ersatz für eine abwechslungsreiche und ausgewogene Ernährung und eine gesunde Lebensweise.</p>
     <nav aria-label="Rechtliches"><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></nav>
   </div>
@@ -300,7 +306,7 @@ footer nav a:hover{text-decoration:underline}
 
 <script>
 (function(){
-  // Warteliste: sendet an /api/warteliste (Pages Function, Double-Opt-in). Backend folgt nach J-05.
+  // Warteliste: sendet an /api/warteliste (Pages Function, Double-Opt-in). Backend folgt (DT-35).
   var f=document.getElementById('wl-form'),email=document.getElementById('wl-email'),consent=document.getElementById('wl-consent'),
       btn=document.getElementById('wl-submit'),status=document.getElementById('wl-status');
   var T={sent:'Fast geschafft! Wir haben dir eine E-Mail geschickt. Bitte bestätige deine Adresse über den Link darin.',

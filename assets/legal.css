@@ -4,4 +4,4 @@ body{background:var(--surface)}
 .legal h2{font-size:21px;line-height:28px;font-weight:600;margin:var(--space-8) 0 var(--space-2)}
 .legal p{margin:0 0 var(--space-3);color:var(--ink)}
 .back{display:inline-flex;align-items:center;min-height:44px;font-size:17px;font-weight:600;text-decoration:none;color:var(--ink)}
-.todo{background:var(--brand-orange-soft);color:var(--ink)!important;padding:var(--space-3) var(--space-4);border-radius:var(--radius-m);font-size:14px;line-height:20px}
+.todo{background:var(--brand-silver-soft);color:var(--ink)!important;padding:var(--space-3) var(--space-4);border-radius:var(--radius-m);font-size:14px;line-height:20px}
